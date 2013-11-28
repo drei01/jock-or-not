@@ -23,7 +23,7 @@ window.JockOrNot = (function(){
                         //get the actual image URL from the id and append it to the document
                         $.getJSON(jsonURL,function(pdata){
                             var sizes = pdata.sizes.size;
-                            viewModel.url(sizes[5].source);
+                            viewModel.url(sizes[6].source);
                         });
                       });
                     });
