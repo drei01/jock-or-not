@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Jock Or Not</title>
+  	
+	<link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+</head>
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body data-bind="style: { backgroundImage: 'url(\'' + url() + '\')' }"
+		>
+    <nav class="navbar navbar-default" role="navigation">
+	  <!-- Brand and toggle get grouped for better mobile display -->
+	  <div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		  <span class="icon-bar"></span>
+		</button>
+		<a class="navbar-brand" href="#">Jock Or Not</a>
+		  <p class="navbar-text">votes: <span data-bind="text:page()-1"></span></p>
+	  </div>
+	
+	  <!-- Collect the nav links, forms, and other content for toggling -->
+	  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		<ul class="nav navbar-nav">
+		  <li data-bind="css: { active: voteView()}"><a href="#" data-bind="click:toggleView">Vote</a></li>
+		  <li data-bind="css: { active: resultsView()}"><a href="#" data-bind="click:toggleView">Results</a></li>
+		</ul>
+	  </div><!-- /.navbar-collapse -->
+	</nav>
+
+    <div class="container" id="voteContainer">
+        <div id="results" data-bind="visible: resultsView() , foreach: resultRows">
+            <div class="row" data-bind="foreach: $data">
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <div class="thumbnail">
+                  <img alt="" data-bind="attr: {src:url}">
+                  <div class="caption">
+                      <span data-bind="css: {best: male>female}">
+                          <span class="fa fa-male"></span> <span data-bind="text:male"></span>
+                      </span>
+                      <span data-bind="css: {best: female>male}">
+                          <span class="fa fa-female"></span> <span data-bind="text:female"></span>
+                      </span>
+                  </div>
+                </div>
+              </div>
+             </div>
+        </div>
+
+        <div class="vote-row" data-bind="visible: voteView()">
+            <button class="btn btn-success voteBtn" data-bind="click: function(){JockOrNot.addVote(url(),1,0);}">Male <span class="fa fa-male"></span></button>
+            <button class="btn btn-success voteBtn" data-bind="click: function(){JockOrNot.addVote(url(),0,1);}">Female <span class="fa fa-female"></span></button>
+        </div>
+    </div>
+		  
+	  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script type="text/javascript" src="https://cdn.firebase.com/v0/firebase.js"></script>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js"></script>
+	  <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+	  <script type="text/javascript" src="main.js"></script>
+  </body>
+</html>
