@@ -1,0 +1,41 @@
+html{
+  height: 100%;
+}
+body{
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:center;
+    min-height: 100%;
+    width:100%;
+}
+#voteContainer{
+    margin-top:50px;
+    height:500px;
+    background-color:transparent;
+    position:relative;
+}
+.vote-row{
+   position:absolute;
+    bottom:0;
+    width:100%;
+}
+.voteBtn{
+    width:40%;
+    margin-right:10%;
+    padding-top:10px;
+    font-size:20px;
+    float:left;
+}
+.spinner{
+    min-height:50%;
+    margin:0 auto;
+    width:100px;
+}
+.caption{
+    text-align:right;
+    font-size:18px;
+}
+.caption .best{
+    color:green;
+}
