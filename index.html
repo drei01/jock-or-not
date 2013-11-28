@@ -34,7 +34,6 @@
 		  <span class="icon-bar"></span>
 		</button>
 		<a class="navbar-brand" href="#">Jock Or Not</a>
-		  <p class="navbar-text">votes: <span data-bind="text:page()-1"></span></p>
 	  </div>
 	
 	  <!-- Collect the nav links, forms, and other content for toggling -->
@@ -43,6 +42,7 @@
 		  <li data-bind="css: { active: voteView()}"><a href="#" data-bind="click:toggleView">Vote</a></li>
 		  <li data-bind="css: { active: resultsView()}"><a href="#" data-bind="click:toggleView">Results</a></li>
 		</ul>
+		<p class="navbar-text">votes: <span data-bind="text:page()-1"></span></p>
 	  </div><!-- /.navbar-collapse -->
 	</nav>
 
