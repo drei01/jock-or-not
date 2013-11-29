@@ -72,6 +72,7 @@ viewModel.resultRows = ko.computed(function() {
 $(document).ready(function(){
     ko.applyBindings(viewModel);
     JockOrNot.getFood();
+	var dataRef = new Firebase("https://jock-or-not.firebaseio.com/voteList");
     dataRef.on('value', function(snapshot) {
       if(snapshot.val() === null) {
       } else {
