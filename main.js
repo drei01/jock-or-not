@@ -8,7 +8,8 @@ var dataRef = new Firebase("https://jock-or-not.firebaseio.com/voteList"),
             viewModel.voteView(!viewModel.voteView());
             viewModel.resultsView(!viewModel.resultsView());
         },
-        results : ko.observableArray()
+        results : ko.observableArray(),
+		voting : ko.observable(false)
     },
     apiKey="88c4981be4246987d3bb6c307b2f69ca";
 
@@ -22,12 +23,14 @@ window.JockOrNot = (function(){
                         //get the actual image URL from the id and append it to the document
                         $.getJSON(jsonURL,function(pdata){
                             var sizes = pdata.sizes.size;
-                            viewModel.url(sizes[6].source);
+                            viewModel.url(sizes[5].source);
+							viewModel.voting(false);
                         });
                     });
                 },
 
         addVote : function (url,male,female){
+						viewModel.voting(true);
                         url = url.replace(/\./g,'~').replace(/\//g,'-');
                         var photoScoreRef = dataRef.child(url);
                         photoScoreRef.transaction(function(currentData) {
