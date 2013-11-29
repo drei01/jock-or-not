@@ -74,9 +74,7 @@ $(document).ready(function(){
     JockOrNot.getFood();
 	var dataRef = new Firebase("https://jock-or-not.firebaseio.com/voteList");
     dataRef.on('value', function(snapshot) {
-      if(snapshot.val() === null) {
-      } else {
-		  $.each(snapshot.val(),function(key,dta){
+     	  $.each(snapshot.val(),function(key,dta){
              var data = {
 				  url:dta.url.replace(/\~/g,'.').replace(/\-/g,'/'),
 				  male:dta.male,
@@ -84,6 +82,5 @@ $(document).ready(function(){
 			  }
 			  viewModel.results.push(data);
 		  });
-      }
     });
 });
