@@ -47,9 +47,10 @@ window.JockOrNot = (function(){
                                               female:currentData.female+female
                                           };
                               }
-                        });
-                        viewModel.page(viewModel.page()+1);
-                        JockOrNot.getFood();
+                        },function(){
+							viewModel.page(viewModel.page()+1);
+                        	JockOrNot.getFood();
+						});
                     }
     };
 })();
