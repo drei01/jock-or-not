@@ -1,5 +1,4 @@
-var dataRef = new Firebase("https://jock-or-not.firebaseio.com/voteList"),
-    viewModel = {
+var 	viewModel = {
         url:ko.observable(''),
         page : ko.observable(1),
         voteView : ko.observable(true),
@@ -32,7 +31,7 @@ window.JockOrNot = (function(){
         addVote : function (url,male,female){
 						viewModel.voting(true);
                         url = url.replace(/\./g,'~').replace(/\//g,'-');
-                        var photoScoreRef = dataRef.child(url);
+                        var photoScoreRef = new Firebase("https://jock-or-not.firebaseio.com/voteList/"+url);
                         photoScoreRef.transaction(function(currentData) {
                               if (currentData === null) {
                                   return {
