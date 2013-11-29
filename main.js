@@ -76,15 +76,14 @@ $(document).ready(function(){
     dataRef.on('value', function(snapshot) {
       if(snapshot.val() === null) {
       } else {
-          for(key in snapshot.val()){
-             var dta = snapshot.val()[key];
+		  $.each(snapshot.val(),function(key,dta){
              var data = {
-              url:dta.url.replace(/\~/g,'.').replace(/\-/g,'/'),
-              male:dta.male,
-              female:dta.female
-          }
-          viewModel.results.push(data);
-          }
+				  url:dta.url.replace(/\~/g,'.').replace(/\-/g,'/'),
+				  male:dta.male,
+				  female:dta.female
+			  }
+			  viewModel.results.push(data);
+		  });
       }
     });
 });
