@@ -68,8 +68,8 @@
         </div>
 
         <div class="vote-row" data-bind="visible: voteView()">
-            <button class="btn btn-success voteBtn" data-bind="click: function(){JockOrNot.addVote(url(),1,0);} , enable : voting">Male <span class="fa fa-male"></span></button>
-            <button class="btn btn-success voteBtn" data-bind="click: function(){JockOrNot.addVote(url(),0,1);} , enable : voting">Female <span class="fa fa-female"></span></button>
+            <button class="btn btn-success voteBtn" data-bind="click: function(){JockOrNot.addVote(url(),1,0);} , enable : !voting()">Male <span class="fa fa-male"></span></button>
+            <button class="btn btn-success voteBtn" data-bind="click: function(){JockOrNot.addVote(url(),0,1);} , enable : !voting()">Female <span class="fa fa-female"></span></button>
         </div>
     </div>
 		  
