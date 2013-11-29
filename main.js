@@ -16,7 +16,7 @@ var dataRef = new Firebase("https://jock-or-not.firebaseio.com/voteList"),
 window.JockOrNot = (function(){
     return{
         getFood : function (){
-                    var jsonURL='http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+apiKey+'&tags=fruit,vegetable,quiche,hummus,snack,latte&safe_search=1&content_type=1&format=json&jsoncallback=?&per_page=10&page=' + viewModel.page();
+                    var jsonURL='http://api.flickr.com/services/rest/?method=flickr.photos.search&api_key='+apiKey+'&tags=vegetable,quiche,hummus,snack,latte,beef&safe_search=1&content_type=1&format=json&jsoncallback=?&per_page=10&page=' + viewModel.page();
                     $.getJSON(jsonURL,function(data){
                       var photo = data.photos.photo[Math.floor(Math.random() * 10)];
                       var jsonURL="http://api.flickr.com/services/rest/?method=flickr.photos.getSizes&api_key="+apiKey+"&photo_id="+photo.id+"&format=json&jsoncallback=?"
