@@ -10,7 +10,8 @@ var 	viewModel = {
         results : ko.observableArray(),
 		voting : ko.observable(false)
     },
-    apiKey="88c4981be4246987d3bb6c307b2f69ca";
+    apiKey="88c4981be4246987d3bb6c307b2f69ca",
+	dataRef = new Firebase("https://jock-or-not.firebaseio.com/voteList");;
 
 window.JockOrNot = (function(){
     return{
@@ -72,15 +73,21 @@ viewModel.resultRows = ko.computed(function() {
 $(document).ready(function(){
     ko.applyBindings(viewModel);
     JockOrNot.getFood();
-	var dataRef = new Firebase("https://jock-or-not.firebaseio.com/voteList");
-    dataRef.on('value', function(snapshot) {
-     	  $.each(snapshot.val(),function(key,dta){
-             var data = {
-				  url:dta.url.replace(/\~/g,'.').replace(/\-/g,'/'),
-				  male:dta.male,
-				  female:dta.female
-			  }
-			  viewModel.results.push(data);
-		  });
-    });
+	
+	viewModel.resultsView.subscribe(function(newValue) {
+		if(newValue==true){
+			dataRef.on('value', function(snapshot) {
+				  $.each(snapshot.val(),function(key,dta){
+					 var data = {
+						  url:dta.url.replace(/\~/g,'.').replace(/\-/g,'/'),
+						  male:dta.male,
+						  female:dta.female
+					  }
+					  viewModel.results.push(data);
+				  });
+			});
+		}else{
+			dataRef.off('value');
+		}
+	});
 });
